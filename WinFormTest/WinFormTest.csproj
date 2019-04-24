@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="Algorithm\MergeSort.cs" />
     <Compile Include="Algorithm\QuickSort.cs" />
+    <Compile Include="Algorithm\SkipList.cs" />
     <Compile Include="Form1.cs">
       <SubType>Form</SubType>
     </Compile>
