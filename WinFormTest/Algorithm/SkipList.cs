@@ -65,9 +65,9 @@ namespace WinFormTest.Algorithm
             int level = RandomLevel();//新节点总层数
             Node newNode = new Node(value, level);
             Node[] update = new Node[level];
+            Node p = head;
             for (int i = level - 1; i >= 0; i--)
             {
-                Node p = head;
                 while (p.forward[i] != null && p.forward[i].Data < value)
                 {
                     p = p.forward[i];
