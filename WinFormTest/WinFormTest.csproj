@@ -46,6 +46,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Algorithm\BinaryTree.cs" />
     <Compile Include="Algorithm\MergeSort.cs" />
     <Compile Include="Algorithm\QuickSort.cs" />
     <Compile Include="Algorithm\SkipList.cs" />
