@@ -8,7 +8,6 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using CYQ.Data;
 using WinFormTest.Algorithm;
 
 namespace WinFormTest
@@ -96,6 +95,7 @@ namespace WinFormTest
             textBox1.Text = BinaryTree.PreOrder(an) + "\r\n";
             textBox1.Text += BinaryTree.InOrder(an) + "\r\n";
             textBox1.Text += BinaryTree.PostOrder(an) + "\r\n";
+            textBox1.Text += BinaryTree.LevelOrder(an) + "\r\n";
             #endregion
 
             #endregion

@@ -11,6 +11,10 @@ namespace WinFormTest.Algorithm
     /// </summary>
     public class BinaryTree
     {
+        /// <summary>
+        /// 二叉树节点
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
         public class Node<T>
         {
             public Node<T> Left { get; set; }
@@ -103,6 +107,65 @@ namespace WinFormTest.Algorithm
             ret += "->" + root.Data.ToString();
 
             return ret;
+        }
+
+        /// <summary>
+        /// 层级遍历
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="root"></param>
+        /// <returns></returns>
+        public static string LevelOrder<T>(Node<T> root)
+        {
+            if (root == null)
+            {
+                return string.Empty;
+            }
+
+            StringBuilder ret = new StringBuilder();
+            List<List<Node<T>>> treeList = new List<List<Node<T>>>();
+
+            Queue<Node<T>> queue = new Queue<Node<T>>();
+            Queue<Node<T>> curQueue = new Queue<Node<T>>();
+            queue.Enqueue(root);
+
+            while(queue.Count > 0)
+            {
+                while (queue.Count > 0)
+                {
+                    curQueue.Enqueue(queue.Dequeue());
+                }
+
+                List<Node<T>> eList = new List<Node<T>>(curQueue.Count);
+                while (curQueue.Count > 0)
+                {
+                    Node<T> node = curQueue.Dequeue();
+                    eList.Add(node);
+
+                    if (node.Left != null)
+                    {
+                        queue.Enqueue(node.Left);
+                    }
+                    if (node.Right != null)
+                    {
+                        queue.Enqueue(node.Right);
+                    }
+                }
+                if (eList.Count > 0)
+                {
+                    treeList.Add(eList);
+                }
+            }
+
+            foreach (var iList in treeList)
+            {
+                foreach (var item in iList)
+                {
+                    ret.AppendFormat("->{0}", item.Data.ToString());
+                }
+            }
+
+            return ret.ToString();
         }
     }
 }
