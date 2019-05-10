@@ -123,45 +123,22 @@ namespace WinFormTest.Algorithm
             }
 
             StringBuilder ret = new StringBuilder();
-            List<List<Node<T>>> treeList = new List<List<Node<T>>>();
 
             Queue<Node<T>> queue = new Queue<Node<T>>();
-            Queue<Node<T>> curQueue = new Queue<Node<T>>();
             queue.Enqueue(root);
 
             while(queue.Count > 0)
             {
-                while (queue.Count > 0)
-                {
-                    curQueue.Enqueue(queue.Dequeue());
-                }
+                Node<T> node = queue.Dequeue();
+                ret.AppendFormat("->{0}", node.Data.ToString());
 
-                List<Node<T>> eList = new List<Node<T>>(curQueue.Count);
-                while (curQueue.Count > 0)
+                if (node.Left != null)
                 {
-                    Node<T> node = curQueue.Dequeue();
-                    eList.Add(node);
-
-                    if (node.Left != null)
-                    {
-                        queue.Enqueue(node.Left);
-                    }
-                    if (node.Right != null)
-                    {
-                        queue.Enqueue(node.Right);
-                    }
+                    queue.Enqueue(node.Left);
                 }
-                if (eList.Count > 0)
+                if (node.Right != null)
                 {
-                    treeList.Add(eList);
-                }
-            }
-
-            foreach (var iList in treeList)
-            {
-                foreach (var item in iList)
-                {
-                    ret.AppendFormat("->{0}", item.Data.ToString());
+                    queue.Enqueue(node.Right);
                 }
             }
 
