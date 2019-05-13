@@ -177,6 +177,7 @@ namespace WinFormTest
             BinaryTree.Delete(root, 55);
             textBox1.Text += BinaryTree.LevelOrder(root) + "\r\n";
 
+            textBox1.Text += BinaryTree.Height(root) + "\r\n";
             #endregion
 
             #endregion

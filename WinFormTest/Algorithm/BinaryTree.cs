@@ -327,5 +327,25 @@ namespace WinFormTest.Algorithm
 
             return false;
         }
+
+        /// <summary>
+        /// 返回节点高度
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <param name="node"></param>
+        /// <returns></returns>
+        public static int Height<T>(Node<T> node)
+        {
+            if (node == null)
+            {
+                return 0;
+            }
+            if (node.Left == null && node.Right == null)
+            {
+                return 0;
+            }
+
+            return Math.Max(Height(node.Left), Height(node.Right)) + 1;
+        }
     }
 }
